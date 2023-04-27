@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.notifications.models.Usuario;
 import com.notifications.services.UserService;
 
-
+//WS PARA MANEJO DE USUARIOS
 @RestController
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 @RequestMapping("/user")
