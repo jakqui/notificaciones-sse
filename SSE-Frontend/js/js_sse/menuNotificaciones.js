@@ -186,6 +186,8 @@ function agregarNotificacion(notificacion, ubicacion){
                                             <a href="javascript:leerNotificacion(${notificacion.id})">
                                                 <b>${notificacion.titulo}</b> ${notificacion.descripcion}
                                                 <br>
+                                                <small><strong>De ${notificacion.theme_nombre_origen}</strong></small>
+                                                <br>
                                                 <small>Hace ${notificacion.tiempo_transcurrido}</small> -
                                                 <small>${moment(notificacion.creado).format("DD/MM/YYYY h:mm:ss")}</small>
                                             </a>
@@ -201,7 +203,7 @@ function agregarNotificacion(notificacion, ubicacion){
         //AGREGAR NOTIFICACION AL ARREGLO
         _notificaciones.push(notificacion);
     }else{
-        console.log("Ya existe esa notificacion")
+        //console.log("Ya existe esa notificacion")
     }			
 }
 
@@ -242,15 +244,19 @@ function cerrarConexion(){
 function validarStatusConexion(){
     document.getElementById('labelDesconectado').style.display = 'none';
     document.getElementById('labelConectado').style.display = 'none';
+    document.getElementById('btnConectar').style.visibility = 'visible';
+    document.getElementById('btnDesconectar').style.visibility = 'visible';
 
     //console.log(es.readyState)
     //CONEXION ABIERTA
     if(es.readyState == 1){
         document.getElementById('labelConectado').style.display = 'block';
+        document.getElementById('btnConectar').style.visibility = 'hidden';
     }
     //CONEXION CERRADA
     if(es.readyState == 2){
         document.getElementById('labelDesconectado').style.display = 'block';
+        document.getElementById('btnDesconectar').style.visibility = 'hidden';
     }
     //SIN CONEXION
     if(es.readyState == 0){

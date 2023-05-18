@@ -1,6 +1,5 @@
 package com.notifications.controllers;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,7 +59,7 @@ public class NotificacionesSSEController {
 		if (cliente != null) {
 			try {
 				cliente.send(SseEmitter.event().name(notificacion.getTheme_nombre_destino()).data(notificacion));
-			} catch (IOException e) {
+			} catch (Exception e) {
 				sse.eliminarClienteDepartamentos(csse.getId());
 			}
 		}

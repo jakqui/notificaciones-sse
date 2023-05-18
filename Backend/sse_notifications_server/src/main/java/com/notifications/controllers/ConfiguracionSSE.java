@@ -1,6 +1,5 @@
 package com.notifications.controllers;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,7 +64,7 @@ public class ConfiguracionSSE {
 			clientesDepartamentosSSE.add(new ClientesDepartamentosSSE(numero_conexion, numero_personal, cliente));
 			cliente.onCompletion(()->eliminarClienteDepartamentos(numero_conexion));
 			cliente.onTimeout(()->eliminarClienteDepartamentos(numero_conexion));
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			//HACER COPIA PARA EVITAR ERRORES AL RECORRER LA ORIGINAL
@@ -108,15 +107,18 @@ public class ConfiguracionSSE {
 		}
 		
 		//HACER COPIA PARA EVITAR ERRORES AL RECORRER LA ORIGINAL	
-		for(ClientesDepartamentosSSE csse : clientesDepartamentosSSECopia) {	
+		/*for(ClientesDepartamentosSSE csse : clientesDepartamentosSSECopia) {	
 			SseEmitter c = csse.getCliente();
 			if (c != null) {
 				try {
 					c.send(SseEmitter.event().name("activo").data(""));
+					System.out.println("Se revisaron conexiones");
 				} catch (Exception e) {
 					eliminarClienteDepartamentos(csse.getId());
 				}
 			}
-		}		
+		}	*/
+		revisarComunicacionClientesActivos(clientesDepartamentosSSECopia);
+		System.out.println(clientesDepartamentosSSE);
 	}
 }

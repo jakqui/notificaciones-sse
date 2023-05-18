@@ -133,9 +133,9 @@
 			<label>Usuario:</label>
 			<select id="selectUsuario" class="selectpicker" data-live-search="true" placeholder="Nada seleccionado">
 			</select>
-			<button class="btn btn-info" type="button" onclick="conectar()"><i class="bi-arrow-repeat"></i>
+			<button id="btnConectar" class="btn btn-info" type="button" onclick="conectar()"><i class="bi-arrow-repeat"></i>
 				Conectar</button>
-			<button class="btn btn-danger" type="button" onclick="cerrarConexion()"><i class="bi-x-circle-fill"></i>
+			<button id="btnDesconectar" style="visibility: hidden;" class="btn btn-danger" type="button" onclick="cerrarConexion()"><i class="bi-x-circle-fill"></i>
 				Cerrar Conexión</button>
 		</div>
 		<br />
